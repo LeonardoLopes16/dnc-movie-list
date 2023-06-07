@@ -3,22 +3,35 @@ import { MovieService } from "../../api/MovieService";
 
 
 const Home = () => {
-const [movie, setMovie] = useState([])
+  const [movies, setMovies] = useState([])
 
   async function getMovies(){
-    const data = await MovieService.getMovies();
-    console.log(data.data.results);
+    const {
+      data: { results },
+    } = await MovieService.getMovies();
+    console.log(results);
+
+    setMovies(results);
   }
   useEffect(() => {
-    getMovies
-  
-  })
+    getMovies();
+    console.log(movies);
+  },[]);
+
+  useEffect(() => {
+    console.log(movies);
+  });
+
+
   
   return (
     <section className="Home">
-      {
-
-      }
+      
+      {movies.map((movie) => (
+        <div key={movie.id}>{movie.title} 
+          <MovieCard />
+        </div>
+      ))}
     </section>
   );
 };
