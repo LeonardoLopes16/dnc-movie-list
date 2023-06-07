@@ -15,9 +15,6 @@ export class MovieService{
     }
 
     static serchMovies(movie){
-        return axios(withBaseUrl("search/movie")+`&query=${movie}`)
+        return axios(withBaseUrl("search/movie")+`&query=${movie}`);
     }
 }
-
-
-
