@@ -5,12 +5,14 @@ import Home from "./pages/Home/Home.jsx"
 import MovieDetail from './pages/MovieDetail/MovieDetail.jsx';
 
 function App() {
+  const [searchValue, setSeachValue] = useState("")
+  
   return (
       <div className="App" style={{backgroundColor:"#303030"}}>
-        <Header />
+        <Header onSubmit={(inputValue) => setSeachValue(inputValue)}/>
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/movie/:id" element={<MovieDetail/>}/>
+          <Route path="/" element={<Home searchValueProp={searchValue}/>}/>
+          <Route path="/movie/:id" element={<MovieDetail />}/>
         </Routes>
       </div>
       
